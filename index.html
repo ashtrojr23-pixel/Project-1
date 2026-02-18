@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashraf Abdalla | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#0d0d0d; color:#f5f5f5; scroll-behavior:smooth; overflow-x: hidden; }
+    a { text-decoration:none; color:inherit; }
+    img { max-width:100%; display:block; }
+
+    /* --- NAVIGATION --- */
+    /* Changed to 'absolute' so it stays at the top and disappears when you scroll down */
+    nav { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      padding:1.5rem 3rem; 
+      position:absolute; /* Key change: Absolute keeps it at the top */
+      top: 0;
+      left: 0;
+      width:100%; 
+      z-index:100; 
+      background: transparent; /* Transparent background for a clean look */
+    }
+    
+    nav .logo { font-size:1.6rem; font-weight:700; color:#ff2c6d; letter-spacing:2px; }
+    nav ul { display:flex; list-style:none; gap:2rem; }
+    nav ul li a { font-weight:500; transition:0.3s; font-size: 1.1rem; }
+    nav ul li a:hover { color:#00bfff; }
+
+    /* --- HERO SECTION --- */
+    .hero { 
+      height:100vh; 
+      display:flex; 
+      justify-content:center; 
+      align-items:center; 
+      text-align:center; 
+      background:linear-gradient(135deg,#1a1a1a,#111); 
+      padding-top: 60px; /* Slight padding to offset the navbar */
+    }
+
+    /* Circular Image Styling */
+    .profile-frame {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 2rem auto; /* Centers the image */
+      border-radius: 50%; /* Makes it a circle */
+      border: 4px solid #ff2c6d; /* Nice pink border */
+      overflow: hidden; /* Crops the image to the circle */
+      box-shadow: 0 0 25px rgba(255, 44, 109, 0.4); /* Glowing effect */
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures image covers circle without stretching */
+    }
+
+    .hero h1 { font-size:3rem; color:#ff2c6d; animation:fadeInDown 1s ease forwards; }
+    .hero h2 { font-size:1.5rem; color:#00bfff; margin-top:0.5rem; animation:fadeInUp 1s ease forwards; }
+    .hero p { margin-top:1rem; max-width:600px; color:#ccc; margin-left: auto; margin-right: auto; animation: fadeInUp 1.5s ease forwards;}
+
+    @keyframes fadeInDown { 0%{opacity:0; transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);} }
+    @keyframes fadeInUp { 0%{opacity:0; transform:translateY(30px);}100%{opacity:1;transform:translateY(0);} }
+
+    /* --- SECTIONS --- */
+    section { padding:5rem 3rem; }
+    section h2 { font-size:2rem; margin-bottom:2rem; text-align:center; color:#ff2c6d; position:relative; }
+    section h2::after { content:''; width:60px; height:3px; background:#00bfff; display:block; margin:10px auto 0; border-radius:5px; }
+
+    .about { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; align-items:flex-start; }
+    .about .bio { max-width:600px; background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; }
+    .about .bio:hover { background:rgba(255,255,255,0.15); }
+    .about .bio h3 { color:#00bfff; margin-bottom:1rem; }
+    .about .bio p { margin-bottom:0.5rem; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+    .card { background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; }
+    .card:hover { background:rgba(255,255,255,0.15); transform:translateY(-5px); }
+    .card h3 { margin-bottom:1rem; color:#00bfff; }
+    .card ul { list-style:none; }
+    .card ul li { margin-bottom:0.5rem; }
+
+    .skills .skill { margin-bottom:1rem; }
+    .skills .skill span { display:block; margin-bottom:0.3rem; font-weight:500; }
+    .skills .skill-bar { width:100%; height:15px; background:#222; border-radius:10px; overflow:hidden; }
+    .skills .skill-bar-inner { height:100%; background:#ff2c6d; width:0; border-radius:10px; animation-fill-mode:forwards; }
+
+    .hobbies { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
+    .hobby { background:rgba(255,255,255,0.05); padding:1rem 2rem; border-radius:50px; transition:0.3s; }
+    .hobby:hover { background:#ff2c6d; color:#fff; }
+
+    .contact { text-align:center; }
+    .contact a { display:inline-block; margin:0.5rem; padding:0.75rem 1.5rem; border-radius:50px; background:#00bfff; color:#fff; font-weight:500; transition:0.3s; }
+    .contact a:hover { background:#ff2c6d; }
+
+    footer { text-align:center; padding:2rem; background:#111; color:#555; }
+
+    @media(max-width:768px){ 
+      .hero h1{font-size:2.5rem;} 
+      .hero h2{font-size:1.2rem;} 
+      nav { flex-direction: column; padding: 1rem; }
+      nav ul{flex-direction:row; gap:1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;} 
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Ashraf.</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="profile-frame">
+        <img src="file_00000000451071f5ba21d40ece4fbe74.jpg" alt="Ashraf Abdalla">
+      </div>
+
+      <h1>Hi, I'm Ashraf Abdalla</h1>
+      <h2>Aspiring Nurse | Polyglot | Creative Thinker</h2>
+      <p>I am a Kenyan highschooler with a passion for medicine, law, and creative expression. Fluent in English, Swahili & French, with a background in counselling psychology.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <div class="bio">
+        <h3>Personal Details</h3>
+        <p><strong>Full Name:</strong> Ashraf Abdalla</p>
+        <p><strong>DOB:</strong> 27 Dec 2007</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Nationality:</strong> Kenyan</p>
+        <p><strong>Religion:</strong> Agnostic</p>
+        <p><strong>Address:</strong> 2104-90100 Kyumbi, Machakos</p>
+      </div>
+      <div class="bio">
+        <h3>Contact & Social</h3>
+        <p><strong>Email:</strong> ashrafabdalla2o7@gmail.com</p>
+        <p><strong>Phone:</strong> +254785117163</p>
+        <p><strong>WhatsApp:</strong> 0785117163</p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/4_.5h.r4f" target="_blank">@4_.5h.r4f</a></p>
+      </div>
+      <div class="bio">
+        <h3>About Me</h3>
+        <p>I am an ambitious, disciplined, and creative individual with a keen interest in nursing, teaching, and law. I aim to leverage my multilingual skills and counselling knowledge to positively impact communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Njoro Boys High School</h3>
+        <ul>
+          <li>KCSE: C+ (2022–2025)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Kipketer Primary School</h3>
+        <ul>
+          <li>KCPE: 366/500 B+ (2014–2021)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Certificates</h3>
+        <ul>
+          <li>Counselling Psychology Certificate (July 2024)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card skills">
+        <h3>Languages</h3>
+        <div class="skill">
+          <span>English</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:100%;"></div></div>
+        </div>
+        <div class="skill">
+          <span>Swahili</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:100%;"></div></div>
+        </div>
+        <div class="skill">
+          <span>French</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:90%;"></div></div>
+        </div>
+      </div>
+      <div class="card skills">
+        <h3>Professional Skills</h3>
+        <div class="skill">
+          <span>Patient Counselling</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:95%;"></div></div>
+        </div>
+        <div class="skill">
+          <span>Healthcare Assistance</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:90%;"></div></div>
+        </div>
+        <div class="skill">
+          <span>Organization & Planning</span>
+          <div class="skill-bar"><div class="skill-bar-inner" style="width:85%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies">
+    <h2>Hobbies & Interests</h2>
+    <div class="hobbies">
+      <div class="hobby">Cooking</div>
+      <div class="hobby">Listening to Music</div>
+      <div class="hobby">Nature Walking</div>
+      <div class="hobby">Creative Writing</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact">
+      <a href="mailto:ashrafabdalla2o7@gmail.com">Email Me</a>
+      <a href="tel:+254785117163">Call Me</a>
+      <a href="https://wa.me/254785117163" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/4_.5h.r4f" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Ashraf Abdalla. All rights reserved.
+  </footer>
+
+</body>
+</html>
